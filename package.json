@@ -4,7 +4,6 @@
   "version": "0.0.0",
   "type": "module",
   "proxy": "https://2f06-34-141-170-68.ngrok-free.app",
-
   "scripts": {
     "dev": "vite",
     "build": "vite build",
