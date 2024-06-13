@@ -10,7 +10,6 @@ function App() {
   const onImageUpload = (event) => {
     setSelectedImage(event.target.files[0]);
   };
-
   const onFormSubmit = async (event) => {
     event.preventDefault();
     if (!selectedImage) {
@@ -21,21 +20,25 @@ function App() {
     const formData = new FormData();
     formData.append('image', selectedImage);
     const config = { headers: { 'Content-Type': 'multipart/form-data' } };
+  
+    console.log("Enviando imagem para:", "https://a484-34-80-114-198.ngrok-free.app/analyze");
+  
     try {
-      const response = await axios.post("https://2f06-34-141-170-68.ngrok-free.app/analyze", formData, config);
+      const response = await axios.post("https://a484-34-80-114-198.ngrok-free.app/analyze", formData, config);
       setOcrResult(response.data.result);
     } catch (error) {
       console.error('Erro ao enviar imagem:', error);
       setErrorMessage('Erro ao enviar imagem. Por favor, tente novamente.');
     }
   };
+  
 
   return (
     <section className="App">
       <h1>Carregue uma imagem</h1>
       <div className={"conteudo"}>
         <form onSubmit={onFormSubmit}>
-         
+     
           <input type="file" id="file" onChange={onImageUpload} />
           <button type="submit">Analisar Imagem</button>
         </form>
